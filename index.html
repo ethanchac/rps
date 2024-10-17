@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+    <script>
+        Math.random()
+        function getRandomInt(max){
+            return Math.floor(Math.random() * max);
+        }
+        function getComputerChoice(){
+            let rand = getRandomInt(3);
+            if(rand === 0){
+                return "rock";
+            }else if(rand === 1){
+                return "paper";
+            }else{
+                return "scissor";
+            }
+        }
+        
+        function getHumanChoice(){
+            let choice = prompt("What do you pick: rock, paper, scissor");
+            return choice;
+        }
+        var humanScore = 0
+        var computerScore = 0
+        function playRound(hc, cc){
+            if(hc === "rock"){
+                if(cc === "paper"){
+                    computerScore++;   
+                }else if(cc === "scissor"){
+                    humanScore++;
+                }
+            }else if(hc === "paper"){
+                if(cc === "rock"){
+                    humanScore++;
+                }else if(cc === "scissor"){
+                    scorec += 1;
+                    computerScore++;
+                }
+            }else if(hc === "scissor"){
+                if(cc === "rock"){
+                    computerScore++;
+                }else if(cc === "paper"){
+                    humanScore++;
+                }
+            }
+            console.log("Human Score: " + humanScore + " Computer Score: " + computerScore);
+        }
+        function playGame(){
+            let i = 0
+            while(i < 5){
+                console.log(humanScore+ " " + computerScore);
+                let cc = getComputerChoice();
+                console.log(cc);
+                let hc = getHumanChoice();
+                console.log(hc);
+                playRound(hc, cc);
+                i += 1;
+            }
+        }
+        const rock = document.querySelector("#rock");
+        const paper = document.querySelector("#paper");
+        const scissor = document.querySelector("#scissor");
+        rock.addEventListener("click", () =>{
+            console.log(humanScore+ " " + computerScore);
+            let cc = getComputerChoice();
+            console.log(cc);
+            let hc = "rock";
+            playRound(hc, cc);
+        });
+        paper.addEventListener("click", () =>{
+            alert("paper working")
+            console.log(humanScore+ " " + computerScore);
+            let cc = getComputerChoice();
+            console.log(cc);
+            let hc = "paper"
+            playRound(hc, cc);
+        });
+        scissor.addEventListener("click", () =>{
+            alert("scissor working")
+            console.log(humanScore+ " " + computerScore);
+            let cc = getComputerChoice();
+            console.log(cc);
+            let hc = "scissor"
+            playRound(hc, cc);
+        });
+        //playGame();
+    </script>
+</body>
+</html>
